@@ -3,13 +3,13 @@ import Page from './page.js';
 /**
  * sub page containing specific selectors and methods for a specific page
  */
-class EditPage extends Page {
+class ButtonsPage extends Page {
     /**
      * define selectors using getter methods
      */
-    get h1Input () {
-        return $('h1=Input');
+    get h1Button () {
+        return $('h1=Button');
     }
 }
 
-export default new EditPage();
+export default new ButtonsPage();
