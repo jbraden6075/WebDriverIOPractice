@@ -141,6 +141,11 @@ export const config = {
                         onlyFailures: false
                     },
                 }],
+                ['allure', {
+                    outputDir: 'allure-results',
+                    disableWebdriverStepsReporting: true,
+                    disableWebdriverScreenshotsReporting: true,
+                }]
             ],
     
     //
@@ -244,8 +249,11 @@ export const config = {
      * @param {Boolean} result.passed    true if test has passed, otherwise false
      * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
+    afterTest: async function (step, scenario, { error, duration, passed }, context) {
+        if (error) {
+            await browser.takeScreenshot();
+    }
+},
 
 
     /**
@@ -297,4 +305,25 @@ export const config = {
     */
     // onReload: function(oldSessionId, newSessionId) {
     // }
+
+    onComplete: function() {
+        const reportError = new Error('Could not generate Allure report')
+        const generation = allure(['generate', 'allure-results', '--clean'])
+        return new Promise((resolve, reject) => {
+            const generationTimeout = setTimeout(
+                () => reject(reportError),
+                5000)
+
+            generation.on('exit', function(exitCode) {
+                clearTimeout(generationTimeout)
+
+                if (exitCode !== 0) {
+                    return reject(reportError)
+                }
+
+                console.log('Allure report successfully generated')
+                resolve()
+            })
+        })
+    }
 }
