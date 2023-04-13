@@ -12,4 +12,4 @@ class DropDownsPage extends Page {
     }
 }
 
-export default new DropDownsPage();
+export default new DropDownsPage()

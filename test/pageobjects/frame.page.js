@@ -12,4 +12,4 @@ class FramePage extends Page {
     }
 }
 
-export default new FramePage();
+export default new FramePage()
