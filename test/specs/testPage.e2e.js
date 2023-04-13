@@ -1,3 +1,4 @@
+import AlertPage from '../pageobjects/alert.page.js'
 import ButtonsPage from '../pageobjects/buttons.page.js'
 import DropDownsPage from '../pageobjects/dropDowns.page.js'
 import EditPage from '../pageobjects/edit.page.js'
@@ -26,6 +27,13 @@ describe('TestPage', () => {
         await TestPage.clickButton(TestPage.btnDropDown)
         await expect(DropDownsPage.h1Dropdown).toBeExisting()
     });
+
+    it('should navigate to Alert page when Dialog button is clicked', async () => {
+        await TestPage.open()
+
+        await TestPage.clickButton(TestPage.btnDialog)
+        await expect(AlertPage.h1Alert).toBeExisting()
+    })
 })
 
 

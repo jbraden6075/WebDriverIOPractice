@@ -21,6 +21,10 @@ class TestPage extends Page {
         return $('=Drop-Down');
     }
 
+    get btnDialog () {
+        return $('=Dialog')
+    }
+
     /**
      * a method to encapsule automation code to interact with the page
      */
