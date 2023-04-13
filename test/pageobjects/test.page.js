@@ -25,6 +25,10 @@ class TestPage extends Page {
         return $('=Dialog')
     }
 
+    get btnInnerHTML () {
+        return $('=Inner HTML')
+    }
+
     /**
      * a method to encapsule automation code to interact with the page
      */

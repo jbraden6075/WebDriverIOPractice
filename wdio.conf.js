@@ -1,3 +1,6 @@
+import TestPage from './test/pageobjects/test.page.js'
+
+
 export const config = {
     //
     // ====================
@@ -225,8 +228,9 @@ export const config = {
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-    // beforeTest: function (test, context) {
-    // },
+    beforeTest: function (test, context) {
+        TestPage.open()
+    },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
