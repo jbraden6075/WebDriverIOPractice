@@ -9,7 +9,19 @@ class EditPage extends Page {
      */
     get h1Input () {
         return $('h1=Input');
-    }
-}
+    };
+
+    get txtFullName () {
+        return $('#fullName');
+    };
+
+    get txtAppendText () {
+        return $('#join');
+    };
+
+    async enterText(txtField, text) {
+        await txtField.addValue(text);
+    };
+};
 
 export default new EditPage();
